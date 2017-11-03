@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.android.lazyfragmentlibrary.LazyBaseFragment;
@@ -30,6 +31,7 @@ public class TestFragment extends LazyBaseFragment {
             super.handleMessage(msg);
             if (msg.what==10){
                 tvName.setText(title+"数据加载完了！");
+                Toast.makeText(getActivity(), "加载完成", Toast.LENGTH_SHORT).show();
                 Log.v(title,"加载");
             }
         }
