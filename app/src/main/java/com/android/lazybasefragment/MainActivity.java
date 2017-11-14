@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.lazy_activity_main);
         ButterKnife.bind(this);
         list_titles=new ArrayList<>();
         for (int i=0;i<8;i++){
