@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.lazy_activity_main);
         ButterKnife.bind(this);
         list_titles=new ArrayList<>();
-        for (int i=0;i<8;i++){
+        for (int i=0;i<4;i++){
             list_titles.add("测试 "+(i+1));
         }
         list_fragments=new ArrayList<>();

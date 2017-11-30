@@ -40,7 +40,7 @@ public class TestFragment extends LazyBaseFragment {
         tvName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvName.setText("加载中...");
+                tvName.setText(title+"加载中...");
                 loadData();
             }
         });
@@ -49,6 +49,7 @@ public class TestFragment extends LazyBaseFragment {
 
     @Override
     protected void loadData() {
+        tvName.setText(title+"加载中...");
         new Thread(){
             @Override
             public void run() {
