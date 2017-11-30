@@ -16,11 +16,10 @@ public abstract class LazyBaseFragment extends Fragment {
     protected boolean isInit;
     protected boolean isLoad;
     private View rootView;
-    private String title;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        title=getArguments().getString("title");
+
         if (null != rootView) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (null != parent) {
@@ -36,7 +35,6 @@ public abstract class LazyBaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         isInit=true;
-        Log.v(title,"onViewCreated");
         isCanLoad();
     }
 
@@ -53,13 +51,11 @@ public abstract class LazyBaseFragment extends Fragment {
             if (getUserVisibleHint()){
                 if (!isLoad){
                     loadData();
-                    Log.v(title,"loading");
                     isLoad=true;
                 }
             }else{
                 if (isLoad){
                     stopLoadData();
-                    Log.v(title,"stoploading");
                 }
             }
         }
@@ -69,7 +65,6 @@ public abstract class LazyBaseFragment extends Fragment {
         super.onDestroyView();
         isInit = false;
         isLoad = false;
-        Log.v(title,"onDestroyView");
     }
     protected abstract void loadData();
     protected abstract void stopLoadData();
