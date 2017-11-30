@@ -19,15 +19,14 @@ public abstract class LazyBaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        if (null != rootView) {
-            ViewGroup parent = (ViewGroup) rootView.getParent();
-            if (null != parent) {
-                parent.removeView(rootView);
-            }
-        } else {
+//        if (null != rootView) {
+//            ViewGroup parent = (ViewGroup) rootView.getParent();
+//            if (null != parent) {
+//                parent.removeView(rootView);
+//            }
+//        } else {
             rootView = setFragmentView(inflater,container);
-        }
+//        }
         return rootView;
     }
 
