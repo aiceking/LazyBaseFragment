@@ -3,6 +3,7 @@ package com.android.lazybasefragment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class TestFragment extends LazyBaseFragment {
 
     @Override
     protected void loadData() {
+        Log.v("haha=","heihei");
         tvName.setText(title+"加载中...");
         new Thread(){
             @Override
