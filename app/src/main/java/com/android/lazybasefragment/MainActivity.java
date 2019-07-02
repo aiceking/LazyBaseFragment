@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         }
         tab.setTitles(list_titles);
         tab.setTabIndex(0, true);
-        viewpager.setOffscreenPageLimit(3);
+//        viewpager.setOffscreenPageLimit(3);
         viewpager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         tab.setOnTabStripSelectedIndexListener(new NavigationTabStrip.OnTabStripSelectedIndexListener() {
             @Override

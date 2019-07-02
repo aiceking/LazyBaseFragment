@@ -1,29 +1,32 @@
 package com.android.lazybasefragment;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.android.lazyfragmentlibrary.LazyBaseFragment;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Created by radio on 2017/10/30.
  */
 
 public class TestFragment extends LazyBaseFragment {
-    private String title;
+
 
     @BindView(R.id.tv_name)
     TextView tvName;
+    private String title;
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -34,23 +37,32 @@ public class TestFragment extends LazyBaseFragment {
         }
     };
     @Override
-    protected View setFragmentView(LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.lazy_fragment_main, container, false);
-         ButterKnife.bind(this, view);
-        title=getArguments().getString("title");
-        tvName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tvName.setText(title+"加载中...");
-                loadData();
-            }
-        });
-        return view;
+    protected int getLayoutRes() {
+        return R.layout.lazy_fragment_main;
     }
 
     @Override
-    protected void loadData() {
-        Log.v("haha=","heihei");
+    protected void initView(View rootView) {
+        title=getArguments().getString("title");
+        ButterKnife.bind(this, rootView);
+    }
+
+    @Override
+    public void onFragmentResume() {
+        super.onFragmentResume();
+        Log.v("onFragmentResume: ",title);
+    }
+
+    @Override
+    public void onFragmentPause() {
+        super.onFragmentPause();
+        Log.v("onFragmentPause: ",title);
+
+    }
+
+    @Override
+    public void onFragmentFirstVisible() {
+        super.onFragmentFirstVisible();
         tvName.setText(title+"加载中...");
         new Thread(){
             @Override
@@ -65,12 +77,10 @@ public class TestFragment extends LazyBaseFragment {
             }
         }.start();
 
-    }
-
-    @Override
-    protected void stopLoadData() {
 
     }
 
-
+    @OnClick(R.id.tv_name)
+    public void onViewClicked() {
+    }
 }
